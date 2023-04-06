@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="661.0" prefWidth="858.0" style="-fx-background-color: #c99ee4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
+   <children>
+      <Label layoutX="243.0" layoutY="155.0" prefHeight="18.0" prefWidth="212.0" text="This is edit Dictionary" />
+      <Accordion layoutX="59.0" layoutY="213.0" />
+      <ButtonBar layoutX="126.0" layoutY="74.0" prefHeight="40.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
