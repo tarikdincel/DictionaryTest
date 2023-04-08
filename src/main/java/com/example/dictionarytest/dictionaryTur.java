@@ -6,54 +6,195 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class engDictionary {
+public class dictionaryTur {
 
-    public static void main(String[] args, String word) {
-        float startTime = System.nanoTime();
-
-        String secondLanguage, stringLanguage;
-
-        for (int a = 0; a < 6; a++) {
-            switch (a) {
-                case 0 -> {
-                    secondLanguage = "tur";
-                    stringLanguage = "Turkish";
-                    findWord(word, secondLanguage, stringLanguage, shortPathEngTur(word), limiterPathEngTur(word));
-                }
-                case 1 -> {
-                    secondLanguage = "deu";
-                    stringLanguage = "Deutsch";
-                    findWord(word, secondLanguage, stringLanguage, 1, 1000000);
-                }
-                case 2 -> {
-                    secondLanguage = "ell";
-                    stringLanguage = "Modern Greek";
-                    findWord(word, secondLanguage, stringLanguage, shortPathEngEll(word), limiterPathEngEll(word));
-                }
-                case 3 -> {
-                    secondLanguage = "fra";
-                    stringLanguage = "French";
-                    findWord(word, secondLanguage, stringLanguage, shortPathEngFra(word), limiterPathEngFra(word));
-                }
-                case 4 -> {
-                    secondLanguage = "ita";
-                    stringLanguage = "Italian";
-                    findWord(word, secondLanguage, stringLanguage, shortPathEngIta(word), limiterPathEngIta(word));
-                }
-                case 5 -> {
-                    secondLanguage = "swe";
-                    stringLanguage = "Swedish";
-                    findWord(word, secondLanguage, stringLanguage, shortPathEngSwe(word), limiterPathEngSwe(word));
-                }
-            }
-        }
-
-        final float duration = System.nanoTime() - startTime;
-        System.out.println("\n"+duration/1000000000);
+    public String isItTurkish(String word){
+        String language = "Turkish";
+        System.out.println(turkish(word));
+        return language;
     }
 
+    static String turkish(String word){
+        String allTranslations = "";
+        String notFound = "";
+        int baseLine = findLineInEnglish(word, 1, 1000000);
+        String newWord = (getWordFromEnglish(baseLine));
+        if (getWordFromEnglish(baseLine) != null){
+            allTranslations = findWordInEnglish(word, baseLine-1);
+            String fakeHeadWord = findFakeHeadWordInTurkish(word, baseLine-1);
 
-    static void findWord(String word, String secondLanguage, String stringLanguage, int startPoint, int limitPoint){
+            String secondLanguage, stringLanguage;
+
+            for (int a = 0; a < 5; a++) {
+                switch (a) {
+                    case 0 -> {
+                        secondLanguage = "deu";
+                        stringLanguage = "Deutsch";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, halfSplitterEngGer(newWord), 10000000, fakeHeadWord);
+                    }
+                    case 1 -> {
+                        secondLanguage = "ell";
+                        stringLanguage = "Modern Greek";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngEll(newWord), limiterPathEngEll(newWord), fakeHeadWord);
+                    }
+                    case 2 -> {
+                        secondLanguage = "fra";
+                        stringLanguage = "French";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngFra(newWord), limiterPathEngFra(newWord), fakeHeadWord);
+                    }
+                    case 3 -> {
+                        secondLanguage = "ita";
+                        stringLanguage = "Italian";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngIta(newWord), limiterPathEngIta(newWord), fakeHeadWord);
+                    }
+                    case 4 -> {
+                        secondLanguage = "swe";
+                        stringLanguage = "Swedish";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngSwe(newWord), limiterPathEngSwe(newWord), fakeHeadWord);
+                    }
+                }
+            }
+            return allTranslations;
+        }
+        return notFound;
+    }
+
+    static int findLineInEnglish(String word, int startPoint, int limitPoint){
+
+        int lineNumber = 1;
+
+        boolean found = false;
+        String tur = "tur";
+        String placeHolder = ".dict";
+        String fileName = tur +"-eng"+placeHolder;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (lineNumber >= startPoint && lineNumber < limitPoint) {
+                    if (found) { //to ignore the other words that startsWith the word we are looking for. ("high" and "highway" i.e.).
+                        break;   //it works because dictionaries are in alphabetical order. so our word is always the shortest one.
+                    }
+                    Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
+                    Matcher matcher = pattern.matcher(line);
+                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                        found = true;
+                        while ((line = br.readLine()) != null) { //print the lines until the next headword.
+                            matcher = pattern.matcher(line);
+                            if (matcher.matches()) { //check if the line is a headword.
+                                break;
+                            }
+                        }
+                    }
+                }
+                lineNumber++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lineNumber;
+    }
+
+    static String findWordInEnglish(String word, int startPoint){
+
+        String output="";
+
+        boolean found = false;
+        String tur = "tur";
+        String placeHolder = ".dict";
+        String fileName = tur +"-eng"+placeHolder;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int lineNumber = 1;
+            while ((line = br.readLine()) != null) {
+                if (lineNumber >= startPoint) {
+                    if (found) { //to ignore the other words that startsWith the word we are looking for. ("high" and "highway" i.e.).
+                        break;   //it works because dictionaries are in alphabetical order. so our word is always the shortest one.
+                    }
+                    Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
+                    Matcher matcher = pattern.matcher(line);
+                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                        output = "\n==========The word exists in Turkish-English Dictionary: ======\n";
+                        found = true;
+                        output += line;
+                        while ((line = br.readLine()) != null) { //print the lines until the next headword.
+                            matcher = pattern.matcher(line);
+                            if (matcher.matches()) { //check if the line is a headword.
+                                break;
+                            }
+                            output += ("\n"+line+"\n");
+                        }
+                    }
+                }
+                lineNumber++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return output;
+    }
+
+    static String findFakeHeadWordInTurkish(String word, int startPoint){
+
+        String output="";
+
+        boolean found = false;
+        String tur = "tur";
+        String placeHolder = ".dict";
+        String fileName = tur +"-eng"+placeHolder;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int lineNumber = 1;
+            while ((line = br.readLine()) != null) {
+                if (lineNumber >= startPoint) {
+                    if (found) { //to ignore the other words that startsWith the word we are looking for. ("high" and "highway" i.e.).
+                        break;   //it works because dictionaries are in alphabetical order. so our word is always the shortest one.
+                    }
+                    Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
+                    Matcher matcher = pattern.matcher(line);
+                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                        found = true;
+                        output = line;
+                    }
+                }
+                lineNumber++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return output;
+    }
+
+    static String getWordFromEnglish(int startLine){
+        try(BufferedReader reader = new BufferedReader(new FileReader("tur-eng.dict"))) {
+            String line;
+            String output;
+            int currentLineNumber = 0;
+
+            while ((line = reader.readLine()) != null) {
+                currentLineNumber++;
+                if (currentLineNumber == startLine) {
+                    if (line.matches("^\\d.*")) {  // Check if line starts with an integer
+                        output = line.replaceFirst("^\\d+.+\\s", "");  // Remove integer and whitespace
+                        output = (output+" /");
+                        return output;
+                    } else {
+                        output = (line+" /");
+                        return output;  // Return original line
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;  // Line number not found
+    }
+
+    static String findWordFromEnglish(String word, String secondLanguage, String stringLanguage, int startPoint, int limitPoint, String fakeHeadWord){
+
+        String output = "";
 
         boolean found = false;
         String eng = "eng";
@@ -71,15 +212,15 @@ public class engDictionary {
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
                     if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
-                        System.out.println("\n==========The word exists in English-"+ stringLanguage +" Dictionary: ======\n");
+                        output = "\n==========The word exists in Turkish-"+ stringLanguage +" Dictionary: ======\n";
                         found = true;
-                        System.out.println(line); //print the headword
+                        output += fakeHeadWord;
                         while ((line = br.readLine()) != null) { //print the lines until the next headword.
                             matcher = pattern.matcher(line);
                             if (matcher.matches()) { //check if the line is a headword.
                                 break;
                             }
-                            System.out.println(line); //print the line.
+                            output += ("\n"+line+"\n");
                         }
                     }
                 }
@@ -88,128 +229,20 @@ public class engDictionary {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return output;
     }
 
-    static int shortPathEngTur (String word) {
-        final int A = 2;
-        final int B = 6059;
-        final int C = 12998;
-        final int D = 24411;
-        final int E = 30289;
-        final int F = 34514;
-        final int G = 39615;
-        final int H = 43539;
-        final int I = 48043;
-        final int J = 52543;
-        final int K = 53694;
-        final int L = 54739;
-        final int M = 58690;
-        final int N = 64574;
-        final int O = 66666;
-        final int P = 69279;
-        final int Q = 79583;
-        final int R = 80297;
-        final int S = 86237;
-        final int T = 102124;
-        final int U = 109443;
-        final int V = 112667;
-        final int W = 114859;
-        final int X = 118542;
-        final int Y = 118637;
-        final int Z = 119071;
-
+    static int halfSplitterEngGer (String word){
+        int firstHalf = 1;
+        int secondHalf = 1000000;
         char firstLetter = word.charAt(0);
-
-        return switch (firstLetter) {
-            case 'a' -> A;
-            case 'b' -> B;
-            case 'c' -> C;
-            case 'd' -> D;
-            case 'e' -> E;
-            case 'f' -> F;
-            case 'g' -> G;
-            case 'h' -> H;
-            case 'i' -> I;
-            case 'j' -> J;
-            case 'k' -> K;
-            case 'l' -> L;
-            case 'm' -> M;
-            case 'n' -> N;
-            case 'o' -> O;
-            case 'p' -> P;
-            case 'q' -> Q;
-            case 'r' -> R;
-            case 's' -> S;
-            case 't' -> T;
-            case 'u' -> U;
-            case 'v' -> V;
-            case 'w' -> W;
-            case 'x' -> X;
-            case 'y' -> Y;
-            case 'z' -> Z;
-            default -> -1;
-        };
-    }
-    static int limiterPathEngTur (String word) {
-        final int A = 2;
-        final int B = 6059;
-        final int C = 12998;
-        final int D = 24411;
-        final int E = 30289;
-        final int F = 34514;
-        final int G = 39615;
-        final int H = 43539;
-        final int I = 48043;
-        final int J = 52543;
-        final int K = 53694;
-        final int L = 54739;
-        final int M = 58690;
-        final int N = 64574;
-        final int O = 66666;
-        final int P = 69279;
-        final int Q = 79583;
-        final int R = 80297;
-        final int S = 86237;
-        final int T = 102124;
-        final int U = 109443;
-        final int V = 112667;
-        final int W = 114859;
-        final int X = 118542;
-        final int Y = 118637;
-        final int Z = 119071;
-
-        char firstLetter = word.charAt(0);
-        char limiterLetter = (char) ((int) firstLetter +1);
-
-        return switch (limiterLetter) {
-            case 'a' -> A;
-            case 'b' -> B;
-            case 'c' -> C;
-            case 'd' -> D;
-            case 'e' -> E;
-            case 'f' -> F;
-            case 'g' -> G;
-            case 'h' -> H;
-            case 'i' -> I;
-            case 'j' -> J;
-            case 'k' -> K;
-            case 'l' -> L;
-            case 'm' -> M;
-            case 'n' -> N;
-            case 'o' -> O;
-            case 'p' -> P;
-            case 'q' -> Q;
-            case 'r' -> R;
-            case 's' -> S;
-            case 't' -> T;
-            case 'u' -> U;
-            case 'v' -> V;
-            case 'w' -> W;
-            case 'x' -> X;
-            case 'y' -> Y;
-            case 'z' -> Z;
-            default -> -1;
-        };
+        int splitterLetter = (char) ((int) firstLetter);
+        if (97 <= splitterLetter && splitterLetter <= 110){
+            return firstHalf;
+        }
+        else {
+            return secondHalf;
+        }
     }
 
     static int shortPathEngEll (String word) {
