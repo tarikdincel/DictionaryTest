@@ -8,30 +8,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
    <children>
       <BorderPane fx:id="mainPane" layoutY="-4.0" prefHeight="582.0" prefWidth="200.0">
          <left>
-            <VBox prefHeight="426.0" prefWidth="200.0" style="-fx-background-color: #F0FFFF;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #F0FFFF;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="142.0" prefWidth="823.0" style="-fx-background-color: #5F9EA0;">
+                  <Pane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #5F9EA0;">
                      <children>
-                        <Label alignment="CENTER" layoutX="22.0" layoutY="41.0" lineSpacing="20.0" prefHeight="71.0" prefWidth="163.0" text="Offline Dictionary" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="19.0" layoutY="37.0" lineSpacing="20.0" prefHeight="71.0" prefWidth="163.0" text="Offline Dictionary" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Button mnemonicParsing="false" onAction="#searchWordButton" prefHeight="58.0" prefWidth="207.0" style="-fx-background-color: #5F9EA0;" text="Search Word" textFill="WHITE" />
-                  <Button mnemonicParsing="false" onAction="#editDictionaryButton" prefHeight="70.0" prefWidth="206.0" style="-fx-background-color: #5F9EA0;" text="Edıt Dictionary" textFill="WHITE" />
-                  <Button mnemonicParsing="false" onAction="#helpButton" prefHeight="70.0" prefWidth="206.0" style="-fx-background-color: #5F9EA0;" text="Help" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#searchWordButton" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #5F9EA0;" text="Search Word" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#editDictionaryButton" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #5F9EA0;" text="Edıt Dictionary" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#helpButton" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #5F9EA0;" text="Help" textFill="WHITE" />
                </children>
             </VBox>
          </left>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
       </BorderPane>
    </children>
 </AnchorPane>
