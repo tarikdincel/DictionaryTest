@@ -20,45 +20,48 @@ public class dictionaryEll {
     }
 
     public String greek(String word){
-
-        int baseLine = findLineInEnglish(word, 1, 1000000);
-        findWordInEnglish(word, baseLine-1);
-        String fakeHeadWord = findFakeHeadWordInGreek(word, baseLine-1);
-        String newWord = (getWordFromEnglish(baseLine));
-
-        String secondLanguage, stringLanguage;
         String allTranslations = "";
+        String notFound = "";
+        int baseLine = findLineInEnglish(word, 1, 1000000);
+        String newWord = (getWordFromEnglish(baseLine));
+        if (newWord != null){
+            allTranslations = findWordInEnglish(word, baseLine-1);
+            String fakeHeadWord = findFakeHeadWordInGreek(word, baseLine-1);
 
-        for (int a = 0; a < 5; a++) {
-            switch (a) {
-                case 0 -> {
-                    secondLanguage = "deu";
-                    stringLanguage = "Deutsch";
-                    allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, halfSplitterEngGer(newWord), 10000000, fakeHeadWord);
-                }
-                case 1 -> {
-                    secondLanguage = "tur";
-                    stringLanguage = "Turkish";
-                    allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngTur(newWord), limiterPathEngTur(newWord), fakeHeadWord);
-                }
-                case 2 -> {
-                    secondLanguage = "fra";
-                    stringLanguage = "French";
-                    allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngFra(newWord), limiterPathEngFra(newWord), fakeHeadWord);
-                }
-                case 3 -> {
-                    secondLanguage = "ita";
-                    stringLanguage = "Italian";
-                    allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngIta(newWord), limiterPathEngIta(newWord), fakeHeadWord);
-                }
-                case 4 -> {
-                    secondLanguage = "swe";
-                    stringLanguage = "Swedish";
-                    allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngSwe(newWord), limiterPathEngSwe(newWord), fakeHeadWord);
+            String secondLanguage, stringLanguage;
+
+            for (int a = 0; a < 5; a++) {
+                switch (a) {
+                    case 0 -> {
+                        secondLanguage = "deu";
+                        stringLanguage = "Deutsch";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, halfSplitterEngGer(newWord), 10000000, fakeHeadWord);
+                    }
+                    case 1 -> {
+                        secondLanguage = "tur";
+                        stringLanguage = "Turkish";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngTur(newWord), limiterPathEngTur(newWord), fakeHeadWord);
+                    }
+                    case 2 -> {
+                        secondLanguage = "fra";
+                        stringLanguage = "French";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngFra(newWord), limiterPathEngFra(newWord), fakeHeadWord);
+                    }
+                    case 3 -> {
+                        secondLanguage = "ita";
+                        stringLanguage = "Italian";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngIta(newWord), limiterPathEngIta(newWord), fakeHeadWord);
+                    }
+                    case 4 -> {
+                        secondLanguage = "swe";
+                        stringLanguage = "Swedish";
+                        allTranslations += findWordFromEnglish(newWord, secondLanguage, stringLanguage, shortPathEngSwe(newWord), limiterPathEngSwe(newWord), fakeHeadWord);
+                    }
                 }
             }
+            return allTranslations;
         }
-        return allTranslations;
+        return notFound;
     }
 
     static int findLineInEnglish(String word, int startPoint, int limitPoint){

@@ -24,7 +24,7 @@ public class dictionaryTur {
         String notFound = "";
         int baseLine = findLineInEnglish(word, 1, 1000000);
         String newWord = (getWordFromEnglish(baseLine));
-        if (getWordFromEnglish(baseLine) != null){
+        if (newWord != null){
             allTranslations = findWordInEnglish(word, baseLine-1);
             String fakeHeadWord = findFakeHeadWordInTurkish(word, baseLine-1);
 

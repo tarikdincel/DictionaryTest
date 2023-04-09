@@ -28,7 +28,8 @@ public class dictionaryFra {
                 case 0 -> {
                     secondLanguage = "tur";
                     stringLanguage = "Turkish";
-                    allTranslations += findWord(word, secondLanguage, stringLanguage, 1, 1000000);                }
+                    allTranslations += findWord(word, secondLanguage, stringLanguage, 1, 1000000);
+                }
                 case 1 -> {
                     secondLanguage = "deu";
                     stringLanguage = "Deutsch";

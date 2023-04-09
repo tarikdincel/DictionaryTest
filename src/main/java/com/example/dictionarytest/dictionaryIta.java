@@ -237,6 +237,124 @@ public class dictionaryIta {
         return output;
     }
 
+    static int shortPathItaEng (String word) {
+        final int A = 408;
+        final int B = 1387;
+        final int C = 1741;
+        final int D = 2641;
+        final int E = 3094;
+        final int F = 3249;
+        final int G = 3619;
+        final int H = 7195;
+        final int I = 3852;
+        final int J = 7195;
+        final int K = 7195;
+        final int L = 4128;
+        final int M = 4297;
+        final int N = 4632;
+        final int O = 4768;
+        final int P = 4926;
+        final int Q = 5602;
+        final int R = 5634;
+        final int S = 5932;
+        final int T = 6655;
+        final int U = 6905;
+        final int V = 7004;
+        final int Z = 7195;
+        final int W = 7195;
+        final int Y = 7195;
+
+        char firstLetter = word.charAt(0);
+
+        return switch (firstLetter) {
+            case 'a' -> A;
+            case 'b' -> B;
+            case 'c' -> C;
+            case 'd' -> D;
+            case 'e' -> E;
+            case 'f' -> F;
+            case 'g' -> G;
+            case 'h' -> H;
+            case 'i' -> I;
+            case 'j' -> J;
+            case 'k' -> K;
+            case 'l' -> L;
+            case 'm' -> M;
+            case 'n' -> N;
+            case 'o' -> O;
+            case 'p' -> P;
+            case 'q' -> Q;
+            case 'r' -> R;
+            case 's' -> S;
+            case 't' -> T;
+            case 'u' -> U;
+            case 'v' -> V;
+            case 'z' -> Z;
+            case 'w' -> W;
+            case 'y' -> Y;
+            default -> -1;
+        };
+    }
+    static int limiterPathItaEng (String word) {
+        final int A = 408;
+        final int B = 1387;
+        final int C = 1741;
+        final int D = 2641;
+        final int E = 3094;
+        final int F = 3249;
+        final int G = 3619;
+        final int H = 7195;
+        final int I = 3852;
+        final int J = 7195;
+        final int K = 7195;
+        final int L = 4128;
+        final int M = 4297;
+        final int N = 4632;
+        final int O = 4768;
+        final int P = 4926;
+        final int Q = 5602;
+        final int R = 5634;
+        final int S = 5932;
+        final int T = 6655;
+        final int U = 6905;
+        final int V = 7004;
+        final int Z = 7195;
+        final int W = 7195;
+        final int Y = 7195;
+
+        char firstLetter = word.charAt(0);
+        char limiterLetter = (char) ((int) firstLetter +1);
+
+        return switch (limiterLetter) {
+            case 'a' -> A;
+            case 'b' -> B;
+            case 'c' -> C;
+            case 'd' -> D;
+            case 'e' -> E;
+            case 'f' -> F;
+            case 'g' -> G;
+            case 'h' -> H;
+            case 'i' -> I;
+            case 'j' -> J;
+            case 'k' -> K;
+            case 'l' -> L;
+            case 'm' -> M;
+            case 'n' -> N;
+            case 'o' -> O;
+            case 'p' -> P;
+            case 'q' -> Q;
+            case 'r' -> R;
+            case 's' -> S;
+            case 't' -> T;
+            case 'u' -> U;
+            case 'v' -> V;
+            case 'z' -> Z;
+            case 'w' -> W;
+            case 'y' -> Y;
+            default -> -1;
+        };
+    }
+
     static int halfSplitterEngGer (String word){
         int firstHalf = 1;
         int secondHalf = 1000000;
