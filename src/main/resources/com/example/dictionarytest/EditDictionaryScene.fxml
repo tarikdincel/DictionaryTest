@@ -6,12 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
    <children>
-      <Label layoutX="239.0" layoutY="286.0" opacity="0.6" prefHeight="27.0" prefWidth="322.0" text="Edit Dictionary feature is coming soon...">
+      <Label alignment="CENTER" layoutX="239.0" layoutY="286.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" opacity="0.6" text="Edit Dictionary feature is coming soon..." AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0">
          <font>
             <Font size="18.0" />
-         </font></Label>
+         </font>
+      </Label>
       <Accordion layoutX="59.0" layoutY="213.0" />
       <ButtonBar layoutX="126.0" layoutY="74.0" prefHeight="40.0" prefWidth="200.0" />
    </children>

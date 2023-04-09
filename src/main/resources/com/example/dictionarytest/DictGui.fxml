@@ -13,7 +13,7 @@
    <children>
       <BorderPane fx:id="mainPane" layoutY="-4.0" prefHeight="582.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="575.0" prefWidth="209.0" style="-fx-background-color: #eae1f6;" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="740.0" prefWidth="209.0" spacing="12.0" style="-fx-background-color: #eae1f6;" BorderPane.alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#searchWordButton" prefHeight="67.0" prefWidth="188.0" style="-fx-background-color: #096076; -fx-border-color: #6e72f4;" text="Search Word" textFill="WHITE">
                      <VBox.margin>
@@ -31,39 +31,7 @@
             </VBox>
          </left>
          <center>
-            <AnchorPane prefHeight="516.0" prefWidth="620.0" style="-fx-background-color: #eae1f6;" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="74.0" layoutY="14.0" prefHeight="35.0" prefWidth="447.0" text="WELCOME TO THE OFFLINE DICTIONARY">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="29.0" layoutY="248.0" prefHeight="27.0" prefWidth="429.0" text="If you need to see the instructions for the application ">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="29.0" layoutY="268.0" prefHeight="18.0" prefWidth="279.0" text="you can click the help button.">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="29.0" layoutY="106.0" prefHeight="38.0" prefWidth="572.0" text="In this app you can find any word in English, French, German, Turkish, ">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="27.0" layoutY="144.0" prefHeight="27.0" prefWidth="566.0" text="Italian,Swedish, Modern Greek and their translations in these seven">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="27.0" layoutY="171.0" prefHeight="18.0" prefWidth="159.0" text="languages">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
+            <AnchorPane prefHeight="516.0" prefWidth="620.0" style="-fx-background-color: #eae1f6;" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <Pane prefHeight="58.0" prefWidth="830.0" style="-fx-background-color: #096076;" BorderPane.alignment="CENTER">
