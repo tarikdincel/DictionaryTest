@@ -19,7 +19,7 @@ public class dictionaryEng {
         return language;
     }
 
-    static String english(String word){
+    public String english(String word){
 
         String secondLanguage, stringLanguage;
         String allTranslations = "";

@@ -12,13 +12,14 @@ public class dictionarySwe {
         String language = "";
         String placeHolder = swedish(word);
         if (!placeHolder.matches("")){
+            System.out.println(placeHolder);
             language = "Swedish";
             return language;
         }
         return language;
     }
 
-    static String swedish(String word){
+    public String swedish(String word){
         String secondLanguage, stringLanguage;
         String allTranslations = "";
 

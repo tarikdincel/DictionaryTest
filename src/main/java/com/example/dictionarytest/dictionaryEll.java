@@ -19,7 +19,7 @@ public class dictionaryEll {
         return language;
     }
 
-    static String greek(String word){
+    public String greek(String word){
 
         int baseLine = findLineInEnglish(word, 1, 1000000);
         findWordInEnglish(word, baseLine-1);

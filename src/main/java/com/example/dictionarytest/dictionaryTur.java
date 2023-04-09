@@ -19,7 +19,7 @@ public class dictionaryTur {
         return language;
     }
 
-    static String turkish(String word){
+    public String turkish(String word){
         String allTranslations = "";
         String notFound = "";
         int baseLine = findLineInEnglish(word, 1, 1000000);

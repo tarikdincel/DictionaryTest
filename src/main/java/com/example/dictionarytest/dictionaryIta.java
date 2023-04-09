@@ -19,7 +19,7 @@ public class dictionaryIta {
         return language;
     }
 
-    static String italian(String word){
+    public String italian(String word){
         String allTranslations = "";
         String notFound = "";
         int baseLine = findLineInEnglish(word, 1, 1000000);
