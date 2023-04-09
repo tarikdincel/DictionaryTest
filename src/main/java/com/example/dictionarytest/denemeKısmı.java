@@ -1,6 +1,8 @@
 package com.example.dictionarytest;
 
 import java.util.Scanner;
+import javafx.scene.image.Image;
+
 
 public class denemeKısmı {
 
