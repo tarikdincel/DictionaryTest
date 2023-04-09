@@ -61,9 +61,9 @@ public class dictionaryEll {
         int lineNumber = 1;
 
         boolean found = false;
-        String tur = "tur";
+        String ell = "ell";
         String placeHolder = ".dict";
-        String fileName = tur +"-eng"+placeHolder;
+        String fileName = ell +"-eng"+placeHolder;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -74,7 +74,7 @@ public class dictionaryEll {
                     }
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
-                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                    if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
                         found = true;
                         while ((line = br.readLine()) != null) { //print the lines until the next headword.
                             matcher = pattern.matcher(line);
@@ -111,7 +111,7 @@ public class dictionaryEll {
                     }
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
-                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                    if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
                         output = "\n==========The word exists in Modern Greek-English Dictionary: ======\n";
                         found = true;
                         output += line;
@@ -151,7 +151,7 @@ public class dictionaryEll {
                     }
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
-                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                    if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
                         found = true;
                         output = line;
                     }

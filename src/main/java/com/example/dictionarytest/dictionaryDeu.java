@@ -75,7 +75,7 @@ public class dictionaryDeu {
                     }
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
-                    if (matcher.matches() && line.startsWith(word)) { //line starts with word we are looking for, and contains two slashes.
+                    if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
                         output = "\n==========The word exists in Deutsch-"+ stringLanguage +" Dictionary: ======\n";
                         found = true;
                         output += line;
