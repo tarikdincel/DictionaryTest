@@ -23,6 +23,36 @@ import java.util.Objects;
 
 public class HelloController  {
 
+    dictionaryEng engDictionary = new dictionaryEng();
+    dictionaryFra fraDictionary = new dictionaryFra();
+    dictionaryTur turDictionary = new dictionaryTur();
+    dictionaryEll ellDictionary = new dictionaryEll();
+    dictionarySwe sweDictionary = new dictionarySwe();
+    dictionaryDeu deuDictionary = new dictionaryDeu();
+    dictionaryIta itaDictionary = new dictionaryIta();
+
+
+    @FXML
+    private TextArea orgEnglish;
+
+    @FXML
+    private TextArea orgFrench;
+
+    @FXML
+    private TextArea orgGerman;
+
+    @FXML
+    private TextArea orgItalian;
+
+    @FXML
+    private TextArea orgModernGreek;
+
+    @FXML
+    private TextArea orgSwedish;
+
+    @FXML
+    private TextArea orgTurkish;
+
 
     @FXML
     private TextField srcBar;
@@ -44,10 +74,29 @@ public class HelloController  {
 
 
     @FXML
-    void srcBarAction(ActionEvent event) {
+    public void srcBarAction(ActionEvent event) {
         Stage stage1 = (Stage) srcBar.getScene().getWindow();
         String srcWord = srcBar.getText();
-        wordSrced.setText(srcWord);
+        char firstLetter = srcWord.charAt(0);
+        int alphabet = (char) ((int) firstLetter);
+
+        if (97 <= alphabet && alphabet <= 122) {
+
+            orgTurkish.setText(turDictionary.turkish(srcWord));
+            orgEnglish.setText(engDictionary.english(srcWord));
+            orgFrench.setText(fraDictionary.french(srcWord));
+            orgGerman.setText(deuDictionary.deutsch(srcWord));
+            orgItalian.setText(itaDictionary.italian(srcWord));
+            orgSwedish.setText(sweDictionary.swedish(srcWord));
+        }
+        else {
+            orgSwedish.setText(sweDictionary.swedish(srcWord));
+            orgTurkish.setText(turDictionary.turkish(srcWord));
+            orgModernGreek.setText(ellDictionary.greek(srcWord));
+        }
+
+
+
 
     }
     private Stage stage;

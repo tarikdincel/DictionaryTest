@@ -20,6 +20,7 @@ public class denemeKismi {
         char firstLetter = tryWord.charAt(0);
         int alphabet = (char) ((int) firstLetter);
         System.out.println(alphabet);
+
         if (97 <= alphabet && alphabet <= 122){
             System.out.println(turDictionary.isItTurkish(tryWord));
             System.out.println("-----------------------------------------------------------------");
