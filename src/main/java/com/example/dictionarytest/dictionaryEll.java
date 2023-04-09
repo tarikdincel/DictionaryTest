@@ -9,8 +9,13 @@ import java.util.regex.Pattern;
 public class dictionaryEll {
 
     public String isItGreek(String word){
-        String language = "Modern Greek";
-        System.out.println(greek(word));
+        String language = "";
+        String placeHolder = greek(word);
+        if (!placeHolder.matches("")){
+            System.out.println(placeHolder);
+            language = "Modern Greek";
+            return language;
+        }
         return language;
     }
 

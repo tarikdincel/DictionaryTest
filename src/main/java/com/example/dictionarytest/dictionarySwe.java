@@ -9,8 +9,12 @@ import java.util.regex.Pattern;
 public class dictionarySwe {
 
     public String isItSwedish(String word){
-        String language = "Swedish";
-        System.out.println(swedish(word));
+        String language = "";
+        String placeHolder = swedish(word);
+        if (!placeHolder.matches("")){
+            language = "Swedish";
+            return language;
+        }
         return language;
     }
 
@@ -23,7 +27,8 @@ public class dictionarySwe {
                 case 0 -> {
                     secondLanguage = "tur";
                     stringLanguage = "Turkish";
-                    allTranslations += findWord(word, secondLanguage, stringLanguage, 1, 1000000);                }
+                    allTranslations += findWord(word, secondLanguage, stringLanguage, 1, 1000000);
+                }
                 case 1 -> {
                     secondLanguage = "deu";
                     stringLanguage = "Deutsch";
@@ -74,7 +79,7 @@ public class dictionarySwe {
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s*/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
                     if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
-                        output = "\n==========The word exists in Sweedish-"+ stringLanguage +" Dictionary: ======\n";
+                        output = "\n==========The word exists in Swedish-"+ stringLanguage +" Dictionary: ======\n";
                         found = true;
                         output += line;
                         while ((line = br.readLine()) != null) { //print the lines until the next headword.

@@ -9,8 +9,13 @@ import java.util.regex.Pattern;
 public class dictionaryTur {
 
     public String isItTurkish(String word){
-        String language = "Turkish";
-        System.out.println(turkish(word));
+        String language = "";
+        String placeHolder = turkish(word);
+        if (!placeHolder.matches("")){
+            System.out.println(placeHolder);
+            language = "Turkish";
+            return language;
+        }
         return language;
     }
 

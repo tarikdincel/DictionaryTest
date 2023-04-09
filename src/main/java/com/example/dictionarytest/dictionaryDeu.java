@@ -9,8 +9,13 @@ import java.util.regex.Pattern;
 public class dictionaryDeu {
 
     public String isItDeutsch(String word){
-        String language = "Deutsch";
-        System.out.println(deutsch(word));
+        String language = "";
+        String placeHolder = deutsch(word);
+        if (!placeHolder.matches("")){
+            System.out.println(placeHolder);
+            language = "Deutsch";
+            return language;
+        }
         return language;
     }
 
