@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
    <children>
-      <Label layoutX="262.0" layoutY="272.0" prefHeight="27.0" prefWidth="274.0" text="Edit Dictionary is coming soon">
+      <Label layoutX="239.0" layoutY="286.0" opacity="0.6" prefHeight="27.0" prefWidth="322.0" text="Edit Dictionary feature is coming soon...">
          <font>
             <Font size="18.0" />
          </font></Label>
