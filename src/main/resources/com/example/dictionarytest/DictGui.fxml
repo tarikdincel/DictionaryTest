@@ -19,10 +19,15 @@
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#editDictionaryButton" prefHeight="70.0" prefWidth="206.0" style="-fx-background-color: #096076; -fx-border-color: #6e72f4;" text="Edıt Dictionary" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#editWordButton" prefHeight="70.0" prefWidth="206.0" style="-fx-background-color: #096076; -fx-border-color: #6e72f4;" text="Edit Word" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin></Button>
+                  <Button layoutX="20.0" layoutY="160.0" mnemonicParsing="false" onAction="#addWordButton" prefHeight="67.0" prefWidth="188.0" style="-fx-background-color: #096076; -fx-border-color: #6e72f4;" text="Add Word" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#helpButton" prefHeight="70.0" prefWidth="206.0" style="-fx-background-color: #096076; -fx-border-color: #6e72f4;" text="Help" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
