@@ -1,11 +1,49 @@
 package com.example.dictionarytest;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 
 
 public class denemeKismi {
 
     public static void main(String[] args) {
+
+        Path filePath = Path.of("deu-eng.dict");
+        List<String> lines = new ArrayList<>();
+        try {
+            lines = Files.readAllLines(filePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<String> lineNumbers = new ArrayList<>();
+
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line.contains("/")) {
+                String headWord = line.split("/")[0];
+                lineNumbers.add(headWord);
+                lineNumbers.add(Integer.toString(i));
+            }
+        }
+
+        String word = "As ";
+        if (lineNumbers.contains(word)) {
+            int index = lineNumbers.indexOf(word);
+            if (index == -1)
+                return;
+            int indexStr = Integer.parseInt(lineNumbers.get(index + 1));
+            System.out.println(lines.get(indexStr));
+            for (int i = 0; i < 4; i++) {
+                if (lines.get(indexStr + i).contains("Synonym")) {
+                    System.out.println(lines.get(indexStr + i));
+                    return;
+                }
+            }
+        }
 
         dictionaryEng engDictionary = new dictionaryEng();
         dictionaryFra fraDictionary = new dictionaryFra();
