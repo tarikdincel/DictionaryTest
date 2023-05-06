@@ -36,7 +36,6 @@ public class HelloController implements Initializable {
     dictionaryDeu deuDictionary = new dictionaryDeu();
     dictionaryIta itaDictionary = new dictionaryIta();
 
-
     @FXML
     private TextArea orgEnglish;
 
@@ -99,16 +98,32 @@ public class HelloController implements Initializable {
     TextArea editResults;
     @FXML
     Button EDIT;
+    @FXML
+    ChoiceBox<String> SynonymCB = new ChoiceBox<>();
+    @FXML
+    private TextField sBar;
+
+    SynonymFinder sFinder = new SynonymFinder();
+
+
+
+    @FXML
+    public void synonymSrcBar(ActionEvent event) {
+
+    }
+
+
+
 
 
     public static String[]language={"Turkish","English","French","Italian","Swedish","German","Modern Greek"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     addWordCB1.getItems().addAll(language);
     addWordCB2.getItems().addAll(language);
     EditCB1.getItems().addAll(language);
     EditCB2.getItems().addAll(language);
+    SynonymCB.getItems().addAll(language);
     }
     Editor editor= new Editor();
     DictionaryEditor dictionaryEditor= new DictionaryEditor();
@@ -221,6 +236,8 @@ public class HelloController implements Initializable {
 
 
 
+
+
     @FXML
     public void srcBarAction(ActionEvent event) {
         Stage stage1 = (Stage) srcBar.getScene().getWindow();
@@ -273,7 +290,7 @@ public class HelloController implements Initializable {
     }
 
     public void SynonymFinderButton(ActionEvent e) throws IOException {
-        Pane view= new FXMLLoader(HelloApplication.class.getResource("SynonymFinder.fxml")).load();
+        Pane view= new FXMLLoader(HelloApplication.class.getResource("SynonymFinderScene.fxml")).load();
         mainPane.setCenter(view);
     }
 
