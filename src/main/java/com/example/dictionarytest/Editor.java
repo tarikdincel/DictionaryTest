@@ -21,19 +21,6 @@ public class Editor{
         pw.println(meaning);
 
         pw.close();
-        /*
-        // adding it to the vice versa
-        String path2=(language2+"-"+language1+".dict");
-        File add2= new File(path2);
-        FileWriter fw2= new FileWriter(add,true);
-        PrintWriter pw2= new PrintWriter(fw2);
-
-        pw.println(meaning+"/"+meaning+"/");
-        pw.println(word);
-        sort.dictionarySorter(path2);
-        pw2.close();
-
-         */
 
     }
     public StringBuilder editWord(String headword, String language1, String language2){
@@ -57,8 +44,7 @@ public class Editor{
             int lineNumber = 1;
             while ((line = br.readLine()) != null) {
                 if (line.startsWith(headword + " /")) {
-                    String strippedLine = line.replaceAll("/.*/", "");
-                    result.add(strippedLine);
+                    result.add(line);
                     result.add(Integer.toString(lineNumber));
                     while ((line = br.readLine()) != null) {
                         lineNumber++;
@@ -97,7 +83,7 @@ public class Editor{
         return lines;
     }
 
-    public static void deleteLines(String fileName, int startLine, int endLine) {
+    public void deleteLines(String fileName, int startLine, int endLine) {
         try {
             File inputFile = new File(fileName);
             File tempFile = new File("tempFile.txt");

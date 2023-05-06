@@ -21,7 +21,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.lang.Integer.parseInt;
 
 public class HelloController implements Initializable {
 
@@ -108,6 +111,7 @@ public class HelloController implements Initializable {
     EditCB2.getItems().addAll(language);
     }
     Editor editor= new Editor();
+    DictionaryEditor dictionaryEditor= new DictionaryEditor();
 
     @FXML
     public void AddButtonAction(ActionEvent actionEvent) throws IOException {
@@ -115,20 +119,63 @@ public class HelloController implements Initializable {
         String lang1=addWordCB1.getValue().toLowerCase().substring(0,3);
         String lang2=addWordCB2.getValue().toLowerCase().substring(0,3);
         String meanings= enterMeaning.getText();
+        String path=lang1+"-"+lang2+".dict";
+        List<String> found=editor.searchHeadwordInFile(word,path);
+
         if(lang1.equals(lang2)){
-            System.out.println("no");
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Wrong Choice");
+            alert.setContentText("The file you are adding is not present");
+            alert.showAndWait();
+        }
+
+       else if(found.isEmpty()){
+           editor.addWord(word,meanings,lang1,lang2);
+            System.out.println("Added");
+            dictionaryEditor.removeNumericOrdersFromFile(path);
+            dictionaryEditor.dictionarySorter(path);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Successful");
+            alert.setContentText("The word is added");
+            alert.showAndWait();
+
 
         }
-        else{editor.addWord(word,meanings,lang1,lang2);
-            System.out.println("Added");}
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Wrong Choice");
+            alert.setContentText("The word is already in the dictionary");
+            alert.showAndWait();
+
+        }
+        enterWord.clear();
+        enterMeaning.clear();
+
+        //clear page
 
     }
     public void EditSearchButton(ActionEvent actionEvent){
-        String word=editEnterWord.getText();
         String lang1=EditCB1.getValue().toLowerCase().substring(0,3);
         String lang2=EditCB2.getValue().toLowerCase().substring(0,3);
+        if(lang1.equals(lang2)) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Wrong Choice");
+            alert.setContentText("The file you are adding is not present");
+            alert.showAndWait();
+
+        }
+        else{
+        String word=editEnterWord.getText();
         StringBuilder st=editor.editWord(word,lang1,lang2);
-        editResults.setText(st.toString());
+        if(st.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Wrong Choice");
+            alert.setContentText("The word is not in the dictionary");
+            alert.showAndWait();
+        }else{
+        editResults.setText(st.toString());}
+        }
 
 
 
@@ -137,13 +184,33 @@ public class HelloController implements Initializable {
         String lang1=EditCB1.getValue().toLowerCase().substring(0,3);
         String lang2=EditCB2.getValue().toLowerCase().substring(0,3);
         String path=lang1+"-"+lang2+".dict";
+        if(lang1.equals(lang2)){
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Wrong Choice");
+            alert.setContentText("The file you are adding is not present");
+            alert.showAndWait();
 
-        File add= new File(path);
-        FileWriter fw= new FileWriter(add,true);
-        PrintWriter pw= new PrintWriter(fw);
-        String editedVer=editResults.getText();
-        pw.println(editedVer);
-        pw.close();
+        }
+        else{
+            File add= new File(path);
+            FileWriter fw= new FileWriter(add,true);
+            PrintWriter pw= new PrintWriter(fw);
+            String editedVer=editResults.getText();
+            pw.println(editedVer);
+            pw.close();
+            List<String> indexes=editor.searchHeadwordInFile(editEnterWord.getText(),path);
+
+            //delete
+            editor.deleteLines(path,parseInt(indexes.get(1)),parseInt(indexes.get(2)));
+            //sort file
+            dictionaryEditor.removeNumericOrdersFromFile(path);
+            dictionaryEditor.dictionarySorter(path);
+            //clear
+            editEnterWord.clear();
+            editResults.clear();
+
+
+        }
 
     }
 
