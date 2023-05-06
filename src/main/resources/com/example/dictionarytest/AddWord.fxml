@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="368.0" prefWidth="586.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
    <children>
-      <ChoiceBox fx:id="addWordCB1" layoutX="88.0" layoutY="78.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="addWordCB2" layoutX="300.0" layoutY="78.0" prefWidth="150.0" />
-      <TextField fx:id="enterWord" layoutX="88.0" layoutY="134.0" prefHeight="26.0" prefWidth="366.0" promptText="Enter the word" />
-      <Button fx:id="Add" alignment="BOTTOM_CENTER" layoutX="469.0" layoutY="331.0" mnemonicParsing="false" onAction="#AddButtonAction" prefHeight="26.0" prefWidth="94.0" text="Add" />
-      <Label layoutX="105.0" layoutY="53.0" text="Language of the word" />
-      <Label layoutX="308.0" layoutY="53.0" text="Language of the meanings" />
-      <Label layoutX="215.0" layoutY="14.0" prefHeight="35.0" prefWidth="117.0" text="Add Word">
+      <ChoiceBox fx:id="addWordCB1" layoutX="208.0" layoutY="132.0" minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="100.0" />
+      <ChoiceBox fx:id="addWordCB2" layoutX="423.0" layoutY="132.0" prefWidth="150.0" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="enterWord" layoutX="208.0" layoutY="184.0" prefHeight="25.0" prefWidth="600.0" promptText="Enter the word" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+      <Button fx:id="Add" alignment="BOTTOM_CENTER" layoutX="605.0" layoutY="465.0" mnemonicParsing="false" onAction="#AddButtonAction" prefHeight="25.0" prefWidth="100.0" text="Add" AnchorPane.rightAnchor="100.60000000000002" />
+      <Label layoutX="100.0" layoutY="106.0" minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="150.0" text="Language of the word" AnchorPane.leftAnchor="100.0" />
+      <Label layoutX="549.0" layoutY="106.0" minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="150.0" text="Language of the meanings" AnchorPane.rightAnchor="100.0" />
+      <Label layoutX="332.0" layoutY="14.0" prefHeight="35.0" prefWidth="117.0" text="Add Word">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="enterMeaning" layoutX="91.0" layoutY="175.0" prefHeight="159.0" prefWidth="366.0" promptText="Enter the meanings" />
+      <TextArea fx:id="enterMeaning" layoutX="100.0" layoutY="222.0" prefHeight="200.0" prefWidth="600.0" promptText="Enter the meanings" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
    </children>
 </AnchorPane>

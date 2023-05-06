@@ -9,15 +9,15 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
    <children>
-      <TextField fx:id="srcBar" alignment="CENTER" layoutX="200.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="400.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-      <Button alignment="CENTER" layoutX="600.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#srcBarAction" prefHeight="26.0" prefWidth="60.0" text="Search" AnchorPane.rightAnchor="140.0" />
-      <Accordion layoutX="200.0" layoutY="173.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="376.0" prefWidth="462.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="173.0">
+      <TextField fx:id="srcBar" alignment="CENTER" layoutX="200.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
+      <Button alignment="CENTER" layoutX="640.0" layoutY="79.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#srcBarAction" prefHeight="26.0" prefWidth="60.0" text="Search" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
+      <Accordion layoutX="200.0" layoutY="173.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="376.0" prefWidth="462.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
         <panes>
           <TitledPane alignment="CENTER" animated="false" text="Origin Language Modern Greek">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgModernGreek" editable="false" layoutX="9.6" layoutY="-9.0" prefHeight="200.0" prefWidth="470.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="-9.600000000000023" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="-18.599999999999994" />
+                        <TextArea fx:id="orgModernGreek" editable="false" layoutX="9.6" layoutY="-9.0" prefHeight="200.0" prefWidth="470.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.600000000000023" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -26,7 +26,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgItalian" editable="false" layoutX="-41.4" layoutY="-18.4" prefHeight="218.0" prefWidth="535.0" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="-51.0" AnchorPane.rightAnchor="-34.0" AnchorPane.topAnchor="-28.0" />
+                        <TextArea fx:id="orgItalian" editable="false" layoutX="-41.4" layoutY="-18.4" prefHeight="218.0" prefWidth="535.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.6" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -35,7 +35,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgTurkish" editable="false" layoutX="-12.4" layoutY="-0.40000000000000036" prefHeight="200.0" prefWidth="481.0" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="-22.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="-10.0" />
+                        <TextArea fx:id="orgTurkish" editable="false" layoutX="-12.4" layoutY="-0.40000000000000036" prefHeight="200.0" prefWidth="481.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.6" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -44,7 +44,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgGerman" editable="false" layoutX="-20.4" layoutY="-4.4" prefHeight="194.0" prefWidth="501.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-30.0" AnchorPane.rightAnchor="-21.0" AnchorPane.topAnchor="-14.0" />
+                        <TextArea fx:id="orgGerman" editable="false" layoutX="-20.4" layoutY="-4.4" prefHeight="194.0" prefWidth="501.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.6" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -53,7 +53,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgEnglish" editable="false" layoutX="4.6" layoutY="-7.4" prefHeight="200.0" prefWidth="477.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-22.0" AnchorPane.topAnchor="-17.0" />
+                        <TextArea fx:id="orgEnglish" editable="false" layoutX="4.6" layoutY="-7.4" prefHeight="200.0" prefWidth="477.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.600000000000023" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -62,7 +62,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgSwedish" editable="false" layoutX="-14.0" layoutY="-8.0" prefHeight="200.0" prefWidth="532.0" AnchorPane.bottomAnchor="-8.800000000000011" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="-57.799999999999955" AnchorPane.topAnchor="-8.0" />
+                        <TextArea fx:id="orgSwedish" editable="false" layoutX="-14.0" layoutY="-8.0" prefHeight="200.0" prefWidth="532.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.600000000000023" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -71,7 +71,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="orgFrench" editable="false" layoutX="-90.0" layoutY="-12.0" prefHeight="218.0" prefWidth="590.0" AnchorPane.bottomAnchor="-12.800000000000011" AnchorPane.leftAnchor="-90.0" AnchorPane.rightAnchor="-30.799999999999955" AnchorPane.topAnchor="-12.0" />
+                        <TextArea fx:id="orgFrench" editable="false" layoutX="-90.0" layoutY="-12.0" prefHeight="218.0" prefWidth="590.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="-9.6" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="-11.0" />
                      </children>
                   </AnchorPane>
             </content>
