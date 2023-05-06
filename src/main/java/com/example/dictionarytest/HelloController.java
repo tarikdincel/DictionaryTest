@@ -272,6 +272,11 @@ public class HelloController implements Initializable {
         mainPane.setCenter(view);
     }
 
+    public void SynonymFinderButton(ActionEvent e) throws IOException {
+        Pane view= new FXMLLoader(HelloApplication.class.getResource("SynonymFinder.fxml")).load();
+        mainPane.setCenter(view);
+    }
+
 
 
 
