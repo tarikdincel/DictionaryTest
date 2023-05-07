@@ -14,7 +14,7 @@ public class SynonymFinder {
     dictionaryDeu dictionaryDeu=new dictionaryDeu();
 
 
-    public List<String> sinonimBul(String input) throws NullPointerException{
+    public List<String> findSynonym(String input) throws NullPointerException {
         Path filePath = Path.of("src/main/resources/dictionaries/deu-eng.dict");
         List<String> lines = new ArrayList<>();
         try {
@@ -60,11 +60,12 @@ public class SynonymFinder {
 
         boolean found = false;
         String placeHolder = ".dict";
-        String fileName = langaugeCode +"-deu"+placeHolder;
+        String fileName = "src/main/resources/dictionaries/" + langaugeCode +"-deu"+placeHolder;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 
             String line;
+            String wordWithSlash = word + " /";
             while ((line = br.readLine()) != null) {
                 if (lineNumber >= startPoint && lineNumber < limitPoint) {
                     if (found) { //to ignore the other words that startsWith the word we are looking for. ("high" and "highway" i.e.).
@@ -72,7 +73,7 @@ public class SynonymFinder {
                     }
                     Pattern pattern = Pattern.compile("(.*\\w.*)\\s/.*"); //a string with exactly two slashes (/).
                     Matcher matcher = pattern.matcher(line);
-                    if (matcher.matches() && line.startsWith(word+" /")) { //line starts with word we are looking for, and contains two slashes.
+                    if (line.startsWith(wordWithSlash) && matcher.matches()) { //line starts with word we are looking for, and contains two slashes.
                         found = true;
                         while ((line = br.readLine()) != null) { //print the lines until the next headword.
                             matcher = pattern.matcher(line);
@@ -91,7 +92,7 @@ public class SynonymFinder {
     }
 
     public String getWordFromDeu(int startLine, String languageCode) {
-        String fileName = languageCode+"-deu.dict";
+        String fileName = "src/main/resources/dictionaries/" + languageCode+"-deu.dict";
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             String output;
@@ -116,7 +117,7 @@ public class SynonymFinder {
 
         return null;  // Line number not found
     }
-    public String sinonimCevirici(List<String> synonymsList, String languageCode) {
+    public String synonymConverter(List<String> synonymsList, String languageCode) {
         StringBuilder allTranslations = new StringBuilder();
         for(int i= 0; i<synonymsList.size(); i++){
             switch (languageCode){
