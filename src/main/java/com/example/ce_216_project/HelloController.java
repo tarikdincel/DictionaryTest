@@ -110,13 +110,13 @@ public class HelloController implements Initializable {
         String srcWord = sBar.getText();
         String lang1 = SynonymCB.getValue().toLowerCase().substring(0, 3);
         if (lang1.equals("deu")){
-            List<String> germanSyn = sFinder.sinonimBul(srcWord);
+            List<String> germanSyn = sFinder.findSynonym(srcWord);
             synArea.setText(germanSyn.toString());
         }else {
             int baseLine = sFinder.findLineInDeu(srcWord, lang1, 1,2500000);
             String newWord = sFinder.getWordFromDeu(baseLine, lang1);
-            List<String> synonymsRemaining = sFinder.sinonimBul(newWord);
-            synArea.setText(sFinder.sinonimCevirici(synonymsRemaining, lang1));
+            List<String> synonymsRemaining = sFinder.findSynonym(newWord);
+            synArea.setText(sFinder.synonymConverter(synonymsRemaining, lang1));
         }
     }
 
