@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #eae1f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarytest.HelloController">
+   <children>
+      <Accordion layoutX="138.0" layoutY="61.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <panes>
+            <TitledPane animated="false" text="Search Word Help">
+               <content>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="1-To use Search word you must first type your word into search bar area then&#10;2-Click Search Button and see its translations on all 7 languages&#10;3-Click any pane of the accordion and see the existing words and their translations&#10;" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="10.0" text="Edit Word Help">
+               <content>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="1-Type the word you want to edit on search bar&#10;2-Chose origin language of the word&#10;3-Chose a language for the meaning&#10;4-Click on search button&#10;5-If there is a word like that in the chosen languages then you will see its current meaning&#10;6-Now rewrite the meaning according to your will&#10;7-Click on edit button" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="10.0" text="Add Word Help">
+               <content>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="1-Chose the language of the word&#10;2-Chose the language of the meaning&#10;3-Type the word on &quot;enter the word&quot; bar&#10;4-Type the meaning to the &quot;enter the meanings&quot; area&#10;5-Click on &quot;Add&quot; button&#10;5.1-If there is already a word like that a window will pop up giving an error&#10;5.2-If there is not a word like that a window will pop up saying succesful" />
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="10.0" layoutY="10.0" text="Synonym Finder Help">
+               <content>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="1-Type the word you wanted the synonyms of on type the word area&#10;2-Chose what language is your word from &#10;3-Click on search button&#10;4-You will see that word's synonyms" />
+               </content>
+            </TitledPane>
+         </panes>
+      </Accordion>
+   </children>
+</AnchorPane>
