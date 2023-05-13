@@ -204,7 +204,7 @@ public class HelloController implements Initializable {
     public void EditEDITButton(ActionEvent actionEvent) throws IOException {
         String lang1 = EditCB1.getValue().toLowerCase().substring(0, 3);
         String lang2 = EditCB2.getValue().toLowerCase().substring(0, 3);
-        String fileName = lang1+"-"+lang2+".dict";
+        String FileName = lang1+"-"+lang2+".dict";
         String path = "src/main/resources/dictionaries/" + lang1 + "-" + lang2 + ".dict";
         if (lang1.equals(lang2)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -224,8 +224,8 @@ public class HelloController implements Initializable {
             //delete
             editor.deleteLines(path, parseInt(indexes.get(1)), parseInt(indexes.get(2)));
             //sort file
-            dictionaryEditor.removeNumericOrdersFromFile(fileName);
-            dictionaryEditor.dictionarySorter(fileName);
+            dictionaryEditor.removeNumericOrdersFromFile(FileName);
+            dictionaryEditor.dictionarySorter(FileName);
             //clear
             editEnterWord.clear();
             editResults.clear();

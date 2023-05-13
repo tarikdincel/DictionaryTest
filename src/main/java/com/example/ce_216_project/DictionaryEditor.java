@@ -105,12 +105,12 @@ public class DictionaryEditor {
     }
 
     public static void renameFile(String oldFileName, String newFileName) {
-        File oldFile = new File("src/main/resources/dictionaries/"+oldFileName);
-        File newFile = new File("src/main/resources/dictionaries/"+newFileName);
+        File OldFile = new File("src/main/resources/dictionaries/"+oldFileName);
+        File NewFile = new File("src/main/resources/dictionaries/"+newFileName);
 
-        if (oldFile.exists()) {
+        if (OldFile.exists()) {
             // Delete the old file
-            if (oldFile.delete()) {
+            if (OldFile.delete()) {
                 System.out.println("Old File Deleted Successfully");
             } else {
                 System.out.println("Failed to Delete Old File");
@@ -118,7 +118,7 @@ public class DictionaryEditor {
         }
 
         // Rename the new file to the old file name
-        if (newFile.renameTo(oldFile)) {
+        if (NewFile.renameTo(OldFile)) {
             System.out.println("Renamed Successfully");
         } else {
             System.out.println("Renamed Unsuccessfully");

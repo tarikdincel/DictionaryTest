@@ -21,8 +21,8 @@ public class Editor {
 
     }
 
-    public StringBuilder editWord(String headword, String language1, String language2) {
-        String fileName = "src/main/resources/dictionaries/" + language1 + "-" + language2 + ".dict";
+    public StringBuilder editWord(String headword, String firstLanguage, String secondLanguage) {
+        String fileName = "src/main/resources/dictionaries/" + firstLanguage + "-" + secondLanguage + ".dict";
         List<String> result = searchHeadwordInFile(headword, fileName);
         List<String> descriptions = getDescriptions(fileName, parseInt(result.get(1)), parseInt(result.get(2)));
         StringBuilder st = new StringBuilder();
