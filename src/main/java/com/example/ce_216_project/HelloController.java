@@ -141,6 +141,7 @@ public class HelloController implements Initializable {
         String lang1 = addWordCB1.getValue().toLowerCase().substring(0, 3);
         String lang2 = addWordCB2.getValue().toLowerCase().substring(0, 3);
         String meanings = enterMeaning.getText();
+        String fileName = lang1+"-"+lang2+".dict";
         String path = "src/main/resources/dictionaries/" + lang1 + "-" + lang2 + ".dict";
         List<String> found = editor.searchHeadwordInFile(word, path);
 
@@ -153,7 +154,7 @@ public class HelloController implements Initializable {
             editor.addWord(word, meanings, lang1, lang2);
             System.out.println("Added");
             dictionaryEditor.removeNumericOrdersFromFile(path);
-            dictionaryEditor.dictionarySorter(path);
+            dictionaryEditor.dictionarySorter(fileName);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Successful");
@@ -203,6 +204,7 @@ public class HelloController implements Initializable {
     public void EditEDITButton(ActionEvent actionEvent) throws IOException {
         String lang1 = EditCB1.getValue().toLowerCase().substring(0, 3);
         String lang2 = EditCB2.getValue().toLowerCase().substring(0, 3);
+        String fileName = lang1+"-"+lang2+".dict";
         String path = "src/main/resources/dictionaries/" + lang1 + "-" + lang2 + ".dict";
         if (lang1.equals(lang2)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -222,8 +224,8 @@ public class HelloController implements Initializable {
             //delete
             editor.deleteLines(path, parseInt(indexes.get(1)), parseInt(indexes.get(2)));
             //sort file
-            dictionaryEditor.removeNumericOrdersFromFile(path);
-            dictionaryEditor.dictionarySorter(path);
+            dictionaryEditor.removeNumericOrdersFromFile(fileName);
+            dictionaryEditor.dictionarySorter(fileName);
             //clear
             editEnterWord.clear();
             editResults.clear();

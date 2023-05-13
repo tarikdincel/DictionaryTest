@@ -49,7 +49,7 @@ class HeadwordComparator implements Comparator<Headword> {
 public class DictionaryEditor {
     public void dictionarySorter(String startFile){
         String inputFile = "src/main/resources/dictionaries/" + startFile;
-        String outputFile = "placeholder.dict";
+        String outputFile = "src/main/resources/dictionaries/placeholder.dict";
 
         Map<String, Headword> headwordMap = new HashMap<>();
 
@@ -93,7 +93,7 @@ public class DictionaryEditor {
         // Sort headwords alphabetically
         Collections.sort(headwords, new HeadwordComparator());
         // Write the sorted headwords to output file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(outputFile)))) {
             for (Headword headword : headwords) {
                 writer.write(headword.toString());
             }
@@ -101,13 +101,12 @@ public class DictionaryEditor {
             e.printStackTrace();
         }
 
-        System.out.println("Sorting complete. Sorted dictionary saved to " + outputFile);
-        renameFile(startFile, outputFile);
+        renameFile(startFile, "placeholder.dict");
     }
 
     public static void renameFile(String oldFileName, String newFileName) {
-        File oldFile = new File(oldFileName);
-        File newFile = new File(newFileName);
+        File oldFile = new File("src/main/resources/dictionaries/"+oldFileName);
+        File newFile = new File("src/main/resources/dictionaries/"+newFileName);
 
         if (oldFile.exists()) {
             // Delete the old file
@@ -137,9 +136,10 @@ public class DictionaryEditor {
     }
 
     public void removeNumericOrdersFromFile(String inputFile) {
+        String inputFilePath = "src/main/resources/dictionaries/"+inputFile;
         // Read input lines from text file
         List<String> lines = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 lines.add(line);
@@ -156,7 +156,7 @@ public class DictionaryEditor {
         }
 
         // Write result to output text file
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("placeholder.dict"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("src/main/resources/dictionaries/placeholder.dict")))) {
             for (String line : result) {
                 bw.write(line);
                 bw.newLine();
