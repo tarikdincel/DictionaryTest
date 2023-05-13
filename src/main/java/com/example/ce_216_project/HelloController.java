@@ -153,7 +153,7 @@ public class HelloController implements Initializable {
         } else if (found.isEmpty()) {
             editor.addWord(word, meanings, lang1, lang2);
             System.out.println("Added");
-            dictionaryEditor.removeNumericOrdersFromFile(path);
+            dictionaryEditor.removeNumericOrdersFromFile(fileName);
             dictionaryEditor.dictionarySorter(fileName);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
